@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>iosplayer</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-12-29T16:53:35.466Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录这一刻</title>
+    <link href="http://yoursite.com/2019/12/29/one%20night/"/>
+    <id>http://yoursite.com/2019/12/29/one%20night/</id>
+    <published>2019-12-29T15:57:05.000Z</published>
+    <updated>2019-12-29T16:53:35.466Z</updated>
+    
+    <content type="html"><![CDATA[<p>又弄到了很晚，最近的生活真的是不平静呀。</p><a id="more"></a><p>何时才能进入完完全全的正轨呢，宝宝最近也是过的不是很开心，果然每个人的生活都有每个人的烦恼呀，真希望能时空穿梭，带我前往未来的某一刻，其他的考试都搞定了，接下来就是复习高数和英语了，然后等待放假，真希望大家都能开开心心的度过每一天的生活，因为人生本来就很短呀，希望大家都能有一个开开心心的每一天。也不说多了，亲亲宝宝，也希望爸妈能够身体健康，最后也希望自己能够学好东西，奔向小康生活</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;又弄到了很晚，最近的生活真的是不平静呀。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+</feed>
