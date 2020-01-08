@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-02T11:42:33.574Z</updated>
+  <updated>2020-01-08T12:43:55.267Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>期末结束啦！</title>
+    <link href="http://yoursite.com/2020/01/08/finally/"/>
+    <id>http://yoursite.com/2020/01/08/finally/</id>
+    <published>2020-01-08T12:09:07.000Z</published>
+    <updated>2020-01-08T12:43:55.267Z</updated>
+    
+    <content type="html"><![CDATA[<p>期末考试终于结束了呀！</p><a id="more"></a><p>这个学期也已经划上了一个句号。怎么说呢，总结一下这个学期吧。</p><p>1.进入了我们学校的双创中心，确立了自己比较喜欢的一个方向ios开发(据说是一个天坑)也认识了许多优秀的学长收获了许多学习方面的经验，我觉得这算是这个学期的最大收获吧。</p><p>2.浪费了许多学习的时间，有时候就是不能很好的控制自己。怎么说呢，一个和我个人对于一些课程的不怎么感冒，也和我自己的重视程度有关，我现在也算是发现了大学有些课程的确是没有什么用处，所以下个学期还是要明白取舍，并不是每一门课值得自己去花费时间。</p><p>3.保持了一定的稳定性，和宝宝和体重和哎……减肥始终还是我的一个重要话题，真的真的要减下来，要保持一个健康的体重呀，这样也能多活一年，也能在体测中有个好一点的成绩呀！</p><p>不管如何，这个学期已经结束了，悟以往之不谏，知来者之可追。这句话无论如何都不会过时的，寒假要抓紧时间学习呀，应该会保持每3天更新一次博客吧，算是一种学习总结和自我督促吧。</p><p>大家寒假快乐呀！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;期末考试终于结束了呀！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>新年快乐！</title>
