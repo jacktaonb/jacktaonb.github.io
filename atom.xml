@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-08T12:43:55.267Z</updated>
+  <updated>2020-01-14T07:08:08.807Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>寒假第一次总结</title>
+    <link href="http://yoursite.com/2020/01/14/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2020/01/14/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%80%BB%E7%BB%93/</id>
+    <published>2020-01-14T06:59:32.000Z</published>
+    <updated>2020-01-14T07:08:08.807Z</updated>
+    
+    <content type="html"><![CDATA[<p>果然，回家才是真正的舒适啊啊啊啊啊啊！</p><a id="more"></a><p>总结一下这几天的学习情况，回家的第一天学习了swift的相关基础知识，怎么说呢，我感觉那个可选类型很奇怪，不知道啥时候能派的上用场，可能还是自己学习不够深入的原因吧，这应该是我重点要理解的东西。第二天就看了一下数据结构，然后下午就和朋友出去玩了一天，感觉还是理工科比较好，至少就业不迷茫噢。一天就愉快的过去了，然后我就过于轻视科目四，直到昨天晚上才开始认真刷题，以后还是不能抱有这样的态度，我觉得不行！然后整个寒假我是想恢复我的运动量，然后读几本书，把课程提前学一下，最主要还是要把swift这个东西学好，加油呀！！！冲就完事了！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;果然，回家才是真正的舒适啊啊啊啊啊啊！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>期末结束啦！</title>
