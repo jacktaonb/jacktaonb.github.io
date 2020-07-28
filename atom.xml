@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-14T07:08:08.807Z</updated>
+  <updated>2020-07-28T10:59:33.781Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>懒散懒散懒散</title>
+    <link href="http://yoursite.com/2020/07/28/day/"/>
+    <id>http://yoursite.com/2020/07/28/day/</id>
+    <published>2020-07-28T10:54:54.000Z</published>
+    <updated>2020-07-28T10:59:33.781Z</updated>
+    
+    <content type="html"><![CDATA[<p>旅游完回来都快一周了，怎么每天还是习惯性摸鱼，所以立帖为证！</p><a id="more"></a><p>很久没写博客，也很久没有认真的写一些学习总结和生活故事了，所以打算定下一个目标，每周写一篇总结，不管是生活故事还是学习总结，都写一点点。顺便也重新学习一下hexo的使用方法，就这样吧，去吃晚餐了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;旅游完回来都快一周了，怎么每天还是习惯性摸鱼，所以立帖为证！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>寒假第一次总结</title>
