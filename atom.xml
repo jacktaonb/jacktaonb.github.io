@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-28T10:59:33.781Z</updated>
+  <updated>2020-09-13T13:20:17.991Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,17 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>懒散懒散懒散</title>
-    <link href="http://yoursite.com/2020/07/28/day/"/>
-    <id>http://yoursite.com/2020/07/28/day/</id>
-    <published>2020-07-28T10:54:54.000Z</published>
-    <updated>2020-07-28T10:59:33.781Z</updated>
+    <title>第一个垃圾项目的总结</title>
+    <link href="http://yoursite.com/2020/01/14/1/"/>
+    <id>http://yoursite.com/2020/01/14/1/</id>
+    <published>2020-01-14T13:20:07.000Z</published>
+    <updated>2020-09-13T13:20:17.991Z</updated>
     
-    <content type="html"><![CDATA[<p>旅游完回来都快一周了，怎么每天还是习惯性摸鱼，所以立帖为证！</p><a id="more"></a><p>很久没写博客，也很久没有认真的写一些学习总结和生活故事了，所以打算定下一个目标，每周写一篇总结，不管是生活故事还是学习总结，都写一点点。顺便也重新学习一下hexo的使用方法，就这样吧，去吃晚餐了。</p>]]></content>
+    <content type="html"><![CDATA[<p>轮子才是最好的工具和学习方法！</p><a id="more"></a><p>在开始做考核项目之前，我只学会常用的UI控件的使用，并且只能进行简单的使用，对于dalegate和datesource的使用几乎为0。</p><p>学了部分课程之后也只学会了部分控件的扩展，对于一些控件也没有进行实际操作过。个人感觉，如果你只是单纯通过书本或者视频又或是通过他人的代码而不是去亲手实践这些控件，你无法在你需要用到的时候快速的写出来，每次要用到的时候还需要去查询各种资料进行借鉴才能使用出来。这也是我的这个总结的由来，通过每一次实践中遇到的坑的总结，帮助自己填平以后学习的路。</p><h3 id="第一个问题：TableViewcell无法拉到屏幕底部"><a href="#第一个问题：TableViewcell无法拉到屏幕底部" class="headerlink" title="第一个问题：TableViewcell无法拉到屏幕底部"></a>第一个问题：TableViewcell无法拉到屏幕底部</h3><p>这个问题主要是由于当cell的数量超出屏幕底部的时候，TableView的height属性也应该相应的减小</p><p>如下代码所示</p><blockquote><p>let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height - 50))</p></blockquote><p><img src="/images/1.png" alt=""></p><p>cell无法显示到tapbar的底部</p><p>当将代码改成</p><blockquote><p>let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height - 145))</p></blockquote><p><img src="/images/2.png" alt=""></p><p>cell就可以完全的显示了。</p><p>由于这次项目只是显示固定个数的cell，所以是使用的具体的数值来调试的，当使用个数不定的cell的时候，需要将height和cell的个数进行相关联避免出现此类的bug。</p><h3 id="针对每个cell或者每个部位的navigationController"><a href="#针对每个cell或者每个部位的navigationController" class="headerlink" title="针对每个cell或者每个部位的navigationController"></a>针对每个cell或者每个部位的navigationController</h3><p>当使用多个cell时，大部分需要应该是每个cell会推进到不同的页面，所以在需要在</p><pre><code>(func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath))</code></pre><p>针对每一个cell的indexPath.row使用控制流进行推进，但是我觉得应该在大量cell的时候会用更加简洁的方法而不是使用简单的控制流进行推进。同时也附上我的复杂代码</p><pre><code>(func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {if(indexPath.row == 0){    let detailVC = webViewController1()    navigationController?.pushViewController(detailVC, animated: true)}else if(indexPath.row == 1){    let detailVC=webViewController2()    navigationController?.pushViewController(detailVC, animated: true)})</code></pre><p>在下一次项目总结的时候，我会寻找到更加合适的方法来写次推进方法</p><p>###仍然未解决的问题</p><p>只使用一个viewcontroller来实现不同cell的访问网页的需求</p><p>###下一阶段的目标</p><ol><li>学习DNSPageVIew和BWDView框架并尽可能的重写一个简化版的框架出来</li><li>学习（界面传值代理闭包通知）、数据储存、架构模式</li><li>继续学习课程，并完成一个完成的新闻类App。</li><li>寻找这个总结中所提到的更好的方案。</li></ol>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;旅游完回来都快一周了，怎么每天还是习惯性摸鱼，所以立帖为证！&lt;/p&gt;
+      &lt;p&gt;轮子才是最好的工具和学习方法！&lt;/p&gt;
     
     </summary>
     
@@ -36,98 +36,6 @@
     
     
       <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>寒假第一次总结</title>
-    <link href="http://yoursite.com/2020/01/14/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2020/01/14/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%80%BB%E7%BB%93/</id>
-    <published>2020-01-14T06:59:32.000Z</published>
-    <updated>2020-01-14T07:08:08.807Z</updated>
-    
-    <content type="html"><![CDATA[<p>果然，回家才是真正的舒适啊啊啊啊啊啊！</p><a id="more"></a><p>总结一下这几天的学习情况，回家的第一天学习了swift的相关基础知识，怎么说呢，我感觉那个可选类型很奇怪，不知道啥时候能派的上用场，可能还是自己学习不够深入的原因吧，这应该是我重点要理解的东西。第二天就看了一下数据结构，然后下午就和朋友出去玩了一天，感觉还是理工科比较好，至少就业不迷茫噢。一天就愉快的过去了，然后我就过于轻视科目四，直到昨天晚上才开始认真刷题，以后还是不能抱有这样的态度，我觉得不行！然后整个寒假我是想恢复我的运动量，然后读几本书，把课程提前学一下，最主要还是要把swift这个东西学好，加油呀！！！冲就完事了！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;果然，回家才是真正的舒适啊啊啊啊啊啊！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>期末结束啦！</title>
-    <link href="http://yoursite.com/2020/01/08/finally/"/>
-    <id>http://yoursite.com/2020/01/08/finally/</id>
-    <published>2020-01-08T12:09:07.000Z</published>
-    <updated>2020-01-08T12:43:55.267Z</updated>
-    
-    <content type="html"><![CDATA[<p>期末考试终于结束了呀！</p><a id="more"></a><p>这个学期也已经划上了一个句号。怎么说呢，总结一下这个学期吧。</p><p>1.进入了我们学校的双创中心，确立了自己比较喜欢的一个方向ios开发(据说是一个天坑)也认识了许多优秀的学长收获了许多学习方面的经验，我觉得这算是这个学期的最大收获吧。</p><p>2.浪费了许多学习的时间，有时候就是不能很好的控制自己。怎么说呢，一个和我个人对于一些课程的不怎么感冒，也和我自己的重视程度有关，我现在也算是发现了大学有些课程的确是没有什么用处，所以下个学期还是要明白取舍，并不是每一门课值得自己去花费时间。</p><p>3.保持了一定的稳定性，和宝宝和体重和哎……减肥始终还是我的一个重要话题，真的真的要减下来，要保持一个健康的体重呀，这样也能多活一年，也能在体测中有个好一点的成绩呀！</p><p>不管如何，这个学期已经结束了，悟以往之不谏，知来者之可追。这句话无论如何都不会过时的，寒假要抓紧时间学习呀，应该会保持每3天更新一次博客吧，算是一种学习总结和自我督促吧。</p><p>大家寒假快乐呀！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;期末考试终于结束了呀！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新年快乐！</title>
-    <link href="http://yoursite.com/2020/01/02/happy%20new%20year/"/>
-    <id>http://yoursite.com/2020/01/02/happy%20new%20year/</id>
-    <published>2020-01-02T11:22:32.000Z</published>
-    <updated>2020-01-02T11:42:33.574Z</updated>
-    
-    <content type="html"><![CDATA[<p>新年快乐呀！</p><a id="more"></a><p>以此来纪念我和鱼的奇幻跨年之旅</p><p>本来计划跨年那一天去和鱼看橘子洲头的烟花，没想到原来12月31号不放烟花！！！！是元旦晚上才会放烟花！！！真的很尴尬噢。但是也不亏啦，又喝了一次喜茶，等待一个多小时的喜茶，果然很好喝hhhhhh，然后心心念念要去吃的新品种派，结果没有了，也是一个小小的伏笔(真的难吃到极点)，正当前往杜甫江阁的时候，忽然发现不是今天放烟花，也只好放弃然后就吃了撑死人的臭豆腐，不过此时的我仍然想去吃想念已久的海底捞，当时说要等3个小时，结果只等了半个小时左右也算是一个意外之喜吧。结果，鱼宝宝吃圣女果吃饱了也是hhhhh。吃到撑的我们，为了消食，走在马路上就跨过了2019，怎么说呢，过去一年对我来说真的算是一种无法言说的感觉，或许对我来说，是一件好事吧。但是无论如何过去的一年也算是过去了。</p><p>新的一年，希望所有的人都能够平平安安，万事皆顺！</p><p>最后一句：爱你呀宝宝！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;新年快乐呀！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录这一刻</title>
-    <link href="http://yoursite.com/2019/12/29/one%20night/"/>
-    <id>http://yoursite.com/2019/12/29/one%20night/</id>
-    <published>2019-12-29T15:57:05.000Z</published>
-    <updated>2020-01-02T11:34:55.268Z</updated>
-    
-    <content type="html"><![CDATA[<p>又弄到了很晚，最近的生活真的是不平静呀。</p><a id="more"></a><p>何时才能进入完完全全的正轨呢，宝宝最近也是过的不是很开心，果然每个人的生活都有每个人的烦恼呀，真希望能时空穿梭，带我前往未来的某一刻，其他的考试都搞定了，接下来就是复习高数和英语了，然后等待放假，真希望大家都能开开心心的度过每一天的生活，因为人生本来就很短呀，希望大家都能有一个开开心心的每一天。也不说多了，亲亲宝宝，也希望爸妈能够身体健康，最后也希望自己能够学好东西，奔向小康生活</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;又弄到了很晚，最近的生活真的是不平静呀。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="日常" scheme="http://yoursite.com/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
