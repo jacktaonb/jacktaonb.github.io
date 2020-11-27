@@ -319,7 +319,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/11/27/2/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 814(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 812(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
@@ -347,7 +347,9 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> modelArray = [<span class="type">NewsModel</span>]()</span><br><span class="line">                <span class="keyword">for</span> item <span class="keyword">in</span> dataArray &#123;</span><br><span class="line">                    <span class="keyword">let</span> dic = item <span class="keyword">as</span>! [<span class="type">String</span>: <span class="type">String</span>]</span><br><span class="line">                    <span class="keyword">let</span> model = <span class="type">NewsModel</span>(author_name: dic[<span class="string">"author_name"</span>]!, category: dic[<span class="string">"category"</span>]!, date: dic[<span class="string">"date"</span>]!, thumbnail_pic_s: dic[<span class="string">"thumbnail_pic_s"</span>]!, title: dic[<span class="string">"title"</span>]!, uniquekey: dic[<span class="string">"uniquekey"</span>]!, url: dic[<span class="string">"url"</span>]!)</span><br><span class="line">                    modelArray.append(model)</span><br></pre></td></tr></table></figure>
 
 <p>到此我们已经完成了第一步，网络请求和数据处理。接下来就是讲数据传递到cell中并加载数据。</p>
-<h2 id="数据加载到cell"><a href="#数据加载到cell" class="headerlink" title="数据加载到cell"></a>数据加载到cell</h2><h4 id="加载的顺序"><a href="#加载的顺序" class="headerlink" title="加载的顺序"></a>加载的顺序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">视图控制器创建网络请求并在主线程中执行 --&gt; 网络请求获取数据并传入视图控制器</span><br><span class="line">网络请求获取数据并传入视图控制器 --&gt; 重加载cell的数据</span><br></pre></td></tr></table></figure>
+<h2 id="数据加载到cell"><a href="#数据加载到cell" class="headerlink" title="数据加载到cell"></a>数据加载到cell</h2><h4 id="加载的顺序"><a href="#加载的顺序" class="headerlink" title="加载的顺序"></a>加载的顺序</h4><pre class="mermaid">graph LR
+视图控制器创建网络请求并在主线程中执行 --> 网络请求获取数据并传入视图控制器
+网络请求获取数据并传入视图控制器 --> 重加载cell的数据</pre>
 
 <h4 id="数据的传递"><a href="#数据的传递" class="headerlink" title="数据的传递"></a>数据的传递</h4><p>首先我们需要在网络请求的方法中传入一个闭包用于传递数据，并且由于需要将数据的传递加载至主线程中所以闭包必须是逃逸闭包</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">loadNetWork</span><span class="params">(block: @escaping <span class="params">(<span class="params">(Bool, Array&lt;NewsModel&gt;)</span></span></span></span> -&gt; <span class="type">Void</span>)) &#123;</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  <span class="type">DispatchQueue</span>.main.async &#123;</span><br><span class="line">                block(<span class="literal">true</span>, modelArray)</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
