@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-03-10T09:32:58.534Z</updated>
+  <updated>2021-03-12T12:03:38.024Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS多线程</title>
+    <link href="http://yoursite.com/2021/03/12/4/"/>
+    <id>http://yoursite.com/2021/03/12/4/</id>
+    <published>2021-03-12T08:03:51.000Z</published>
+    <updated>2021-03-12T12:03:38.024Z</updated>
+    
+    <content type="html"><![CDATA[<p>一点点基础知识！</p><a id="more"></a><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>在之前我们提到，整个列表的数据都是从网络中请求加载到cell当中的，但是由于cell中含有图像的加载的问题，会造成我们App的启动速度十分缓慢和我们在滑动列表的时候产生严重的卡顿，所以接下来我们需要利用线程对列表的滑动体验进行优化。</p><p>优化前的效果</p><p><img src="/images/before.gif"></p><h2 id="线程是什么"><a href="#线程是什么" class="headerlink" title="线程是什么"></a>线程是什么</h2><p>线程是某一进程中一个单独运行的程序。也就是进程的一个实体，是CPU调度和分派的基本单位。</p><h2 id="我们如何使用线程"><a href="#我们如何使用线程" class="headerlink" title="我们如何使用线程"></a>我们如何使用线程</h2><p>在iOS中，线程通常被分为主线程和其他线程。通常我们编写的代码都是在主线程中运行的。为了优化体验，我们需要将图片的加载过程放入到其他线程中，并且在Cell中使用占位图，在非主线程中请求图片数据并加载到Cell上。</p><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> downloadImageThread = <span class="type">Thread</span>(block: &#123; [<span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                </span><br><span class="line">                rightImage.image = <span class="type">UIImage</span>(data: <span class="keyword">try</span> <span class="type">Data</span>(contentsOf: <span class="type">URL</span>(string: model.thumbnail_pic_s)!))</span><br><span class="line">            &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        downloadImageThread.name = <span class="string">&quot;downloadImageThread&quot;</span></span><br><span class="line">        downloadImageThread.start()</span><br></pre></td></tr></table></figure><p>在写下以上代码之后，可以发现无论是App的启动速度和列表的滑动体验都又了明显的提升。</p><p>效果如下</p><p><img src="/images/after.gif"></p><p>但是我们可以在Xcode中看见系统进行了警告<img src="/images/warn.png"></p><blockquote><p>虽然我们提前放置了占位图，但是任何有关UI的操作都应该放在主线程中进行</p></blockquote><p>所以我们在这里引入另外一个线程的管理方式</p><h2 id="Grand-Central-Dispatch（GCD）"><a href="#Grand-Central-Dispatch（GCD）" class="headerlink" title="Grand Central Dispatch（GCD）"></a>Grand Central Dispatch（GCD）</h2><p>在了解GCD之前，我们需要在这里引入两个概念，<strong>任务</strong>和<strong>队列</strong></p><ul><li>任务：指的是我们需要执行的操作，也就是代码块（block）中的代码。</li><li>队列：指的是执行任务的等待队列，从数据结构中我们知道队列的特点是先进先出，所以我们的任务也是先进先出的。</li></ul><blockquote><p>GCD的优点就是，使开发者从面向线程较为底层的管理变成了面向队列，由系统来为队列从线程池中分配线程执行我们的任务。</p></blockquote><p><img src="/images/thread.png"></p><p>将上述代码改成使用GCD的方式则如下所示</p><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局并发队列</span></span><br><span class="line"><span class="keyword">let</span> downloadQueue = <span class="type">DispatchQueue</span>.global(qos: .<span class="keyword">default</span>)</span><br><span class="line">        <span class="keyword">let</span> mainQueue = <span class="type">DispatchQueue</span>.main</span><br><span class="line">        <span class="comment">//在非主队列中进行网络请求</span></span><br><span class="line">        downloadQueue.async(execute: &#123; [<span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">var</span> modelImage: <span class="type">UIImage?</span> = <span class="literal">nil</span></span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                 modelImage = <span class="type">UIImage</span>(data: <span class="keyword">try</span> <span class="type">Data</span>(contentsOf: <span class="type">URL</span>(string: model.thumbnail_pic_s)!))</span><br><span class="line">            &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//在主队列中进行UI操作</span></span><br><span class="line">            mainQueue.async(execute: &#123; [<span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">                rightImage.image = modelImage</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="/images/aafter.gif"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;一点点基础知识！&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学习" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>沙盒和列表数据缓存</title>
